@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>موقع مدرسة النهروان</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: grid;
+      min-height: 100vh;
+      margin: 0;
+      place-items: center;
+      padding: 24px;
+      background: #f5f7fb;
+      color: #1f2937;
+      font-family: Tahoma, Arial, sans-serif;
+      text-align: center;
+    }
+
+    main {
+      animation: page-entry 600ms ease-out both;
+    }
+
+    a {
+      transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    }
+
+    a:hover {
+      box-shadow: 0 6px 16px #17255424;
+      transform: translateY(-2px);
+    }
+
+    a:active {
+      transform: scale(0.98);
+    }
+
+    a:focus-visible {
+      outline: 3px solid #60a5fa;
+      outline-offset: 3px;
+    }
+
+    @keyframes page-entry {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    main {
+      width: min(100%, 640px);
+      padding: 40px 28px;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 8px 24px #1725541a;
+    }
+
+    .school-logo {
+      display: block;
+      width: 156px;
+      height: 156px;
+      margin: 0 auto 20px;
+      padding: 4px;
+      border-radius: 50%;
+      background: #fff;
+      object-fit: contain;
+    }
+
+    h1 {
+      color: #172554;
+      line-height: 1.7;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      background: #172554;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .back-link:hover,
+    .back-link:focus-visible {
+      background: #1e3a8a;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <img class="school-logo" src="assets/school-logo.png" alt="شعار مدرسة النهروان">
+    <h1>الموقع الرسمي لمدرسة النهروان الثانوية في جدة</h1>
+    <a class="back-link" href="index.html">الرجوع للرئيسية</a>
+  </main>
+</body>
+</html>

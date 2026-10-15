@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>مدرسة النهروان</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f5f7fb;
+      color: #1f2937;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .sidebar {
+      animation: enter-page 550ms ease-out both;
+    }
+
+    main > section {
+      animation: enter-page 650ms ease-out both;
+    }
+
+    main > section:nth-child(2) {
+      animation-delay: 100ms;
+    }
+
+    main > section:nth-child(3) {
+      animation-delay: 180ms;
+    }
+
+    @keyframes enter-page {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    a,
+    button,
+    input,
+    select,
+    .overview-card,
+    .announcement,
+    .announcement-editor {
+      transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease,
+        box-shadow 180ms ease, transform 180ms ease;
+    }
+
+    button:active,
+    a:active,
+    .overview-card:active,
+    .announcement:active {
+      transform: scale(0.98);
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    .announcement-editor:focus-visible {
+      outline: 3px solid #60a5fa;
+      outline-offset: 3px;
+    }
+
+    .click-effect {
+      position: fixed;
+      z-index: 9999;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #60a5fa;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: click-ripple 500ms ease-out forwards;
+    }
+
+    @keyframes click-ripple {
+      to {
+        opacity: 0;
+        transform: scale(3.5);
+      }
+    }
+
+    .sidebar {
+      position: fixed;
+      inset: 0 0 0 auto;
+      width: 240px;
+      padding: 32px 20px;
+      background: #172554;
+      color: #fff;
+    }
+
+    .sidebar h1 {
+      margin: 0 0 32px;
+      font-size: 22px;
+    }
+
+    .sidebar-logo {
+      display: block;
+      width: 132px;
+      height: 132px;
+      margin: 0 auto 24px;
+      padding: 5px;
+      border-radius: 50%;
+      background: #fff;
+      object-fit: contain;
+    }
+
+    .sidebar nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: 8px;
+      color: #dbeafe;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover,
+    .sidebar a:focus-visible {
+      background: #1e3a8a;
+      color: #fff;
+      outline: 3px solid #60a5fa;
+      outline-offset: 2px;
+    }
+
+    main {
+      margin-right: 240px;
+      padding: 40px;
+      max-width: 1440px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    .home-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(32px, 6vw, 72px);
+      border-radius: 20px;
+      background: linear-gradient(135deg, #172554, #1e40af);
+      color: #fff;
+      box-shadow: 0 16px 36px #17255424;
+    }
+
+    .home-hero::after {
+      position: absolute;
+      inset: auto -60px -120px auto;
+      width: 300px;
+      height: 300px;
+      border: 36px solid #ffffff12;
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .home-hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .home-hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .home-hero-logo {
+      flex: 0 0 auto;
+      width: clamp(88px, 13vw, 144px);
+      height: clamp(88px, 13vw, 144px);
+      padding: 5px;
+      border-radius: 50%;
+      background: #fff;
+      object-fit: contain;
+    }
+
+    .home-hero-copy .eyebrow {
+      margin: 0 0 12px;
+      color: #bfdbfe;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .home-hero-copy h2 {
+      max-width: 700px;
+      margin: 0 0 16px;
+      font-size: clamp(30px, 5vw, 46px);
+      line-height: 1.35;
+    }
+
+    .home-hero-copy > p:last-child {
+      max-width: 620px;
+      margin: 0;
+      color: #dbeafe;
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    .home-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .home-actions a {
+      display: inline-block;
+      padding: 12px 18px;
+      border: 1px solid #ffffff70;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .home-actions a:first-child {
+      border-color: #fff;
+      background: #fff;
+      color: #172554;
+    }
+
+    .home-actions a:hover,
+    .home-actions a:focus-visible {
+      outline: 3px solid #bfdbfe;
+      outline-offset: 2px;
+      transform: translateY(-2px);
+    }
+
+    .home-overview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .overview-card {
+      padding: 22px;
+      border: 1px solid #dbeafe;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .overview-card:hover,
+    .announcement:hover {
+      border-color: #93c5fd;
+      box-shadow: 0 8px 20px #17255414;
+      transform: translateY(-3px);
+    }
+
+    .overview-card h3 {
+      margin: 0 0 8px;
+      color: #172554;
+    }
+
+    .overview-card p {
+      margin: 0;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+
+    .updates-heading {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .updates-logo {
+      flex: 0 0 auto;
+      width: 72px;
+      height: 72px;
+      padding: 3px;
+      border: 1px solid #dbeafe;
+      border-radius: 50%;
+      background: #fff;
+      object-fit: contain;
+    }
+
+    .updates-heading h2 {
+      margin: 0 0 8px;
+      color: #172554;
+    }
+
+    .updates-heading-title {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .updates-heading-title h2 {
+      margin: 0;
+    }
+
+    .updates-page-link {
+      display: inline-block;
+      padding: 9px 14px;
+      border-radius: 8px;
+      background: #172554;
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .updates-page-link:hover {
+      background: #1e3a8a;
+      transform: translateY(-2px);
+    }
+
+    .updates-heading p {
+      margin: 0;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+
+    .notifications-board {
+      padding: 24px;
+      border: 1px solid #dbeafe;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 4px 12px #1725540d;
+    }
+
+    .notifications-board h2 {
+      margin-top: 0;
+      color: #172554;
+    }
+
+    .notifications-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .notifications-header h2 {
+      margin: 0;
+    }
+
+    .create-announcement-button,
+    .announcement-form button {
+      padding: 11px 18px;
+      border: 0;
+      border-radius: 8px;
+      background: #172554;
+      color: #fff;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .create-announcement-button:hover,
+    .announcement-form button:hover,
+    .create-announcement-button:focus-visible,
+    .announcement-form button:focus-visible {
+      background: #1e3a8a;
+    }
+
+    .announcement-form {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding: 18px;
+      border: 1px solid #dbeafe;
+      border-radius: 8px;
+      background: #f8faff;
+    }
+
+    .announcement-form[hidden] {
+      display: none;
+    }
+
+    .announcement-form label {
+      display: grid;
+      gap: 6px;
+      color: #172554;
+      font-weight: bold;
+    }
+
+    .announcement-form input,
+    .announcement-form textarea,
+    .announcement-form select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font: inherit;
+    }
+
+    .editor-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-bottom: 0;
+      border-radius: 6px 6px 0 0;
+      background: #fff;
+    }
+
+    .editor-toolbar button {
+      padding: 8px 12px;
+    }
+
+    .editor-toolbar input[type="color"] {
+      width: 44px;
+      height: 40px;
+      padding: 4px;
+      cursor: pointer;
+    }
+
+    .editor-toolbar select {
+      width: auto;
+    }
+
+    .editor-toolbar .link-url {
+      flex: 1 1 180px;
+      width: auto;
+    }
+
+    .image-upload-input {
+      display: none;
+    }
+
+    .announcement-editor {
+      min-height: 140px;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 0 0 6px 6px;
+      background: #fff;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .announcement-editor:focus {
+      border-color: #1e3a8a;
+      outline: 2px solid #bfdbfe;
+    }
+
+    .announcement-editor:hover {
+      border-color: #93c5fd;
+    }
+
+    .announcement-editor img,
+    .announcement img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+
+    .announcement a {
+      color: #1d4ed8;
+      text-decoration: underline;
+      overflow-wrap: anywhere;
+    }
+
+    .editor-status {
+      margin: 0;
+      color: #b91c1c;
+      line-height: 1.6;
+    }
+
+    .announcement > div {
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .announcement-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .announcement {
+      padding: 18px;
+      border-radius: 8px;
+      background: #f5f7fb;
+    }
+
+    .announcement h3 {
+      margin: 0 0 8px;
+      color: #172554;
+    }
+
+    .announcement p {
+      margin: 0;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    .notifications-empty {
+      margin: 0;
+      padding: 18px;
+      border-radius: 8px;
+      background: #f5f7fb;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        padding: 24px 14px;
+      }
+
+      .sidebar h1 {
+        margin-bottom: 16px;
+      }
+
+      main {
+        margin-right: 0;
+        padding: 24px 16px;
+      }
+
+      .sidebar nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .home-hero {
+        padding: 32px 24px;
+      }
+
+      .home-hero-brand {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .home-hero-logo {
+        width: 88px;
+        height: 88px;
+      }
+
+      .updates-heading {
+        align-items: flex-start;
+      }
+
+      .updates-logo {
+        width: 56px;
+        height: 56px;
+      }
+
+      .notifications-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .click-effect {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar" aria-label="الشريط الجانبي">
+    <img class="sidebar-logo" src="assets/school-logo.png" alt="شعار مدرسة النهروان">
+    <h1>القائمة</h1>
+    <nav>
+      <a href="#home">الرئيسية</a>
+      <a href="school-updates.html">تحديثات المدرسة</a>
+      <a href="#notifications">الإعلانات</a>
+      <a href="school-site.html">موقع مدرسة النهروان</a>
+      <a href="https://classroom.google.com/u/0/c/ODg0NjkwNTM4NzY4" target="_blank" rel="noopener noreferrer">جوجل كلاس روم</a>
+
+
+
+
+
+
+    </nav>
+  </aside>
+  <main>
+    <section id="home" class="home-hero">
+      <div class="home-hero-brand">
+        <img class="home-hero-logo" src="assets/school-logo.png" alt="شعار مدرسة النهروان">
+        <div class="home-hero-copy">
+          <p class="eyebrow">مدرسة النهروان الثانوية - جدة</p>
+          <h2>مرحبًا بك في موقع مدرسة النهروان</h2>
+          <p>من هنا يمكنك متابعة إعلانات المدرسة وآخر مستجداتها بسهولة.</p>
+        </div>
+      </div>
+      <div class="home-actions">
+        <a href="#updates">عرض الأعمال</a>
+        <a href="school-site.html">موقع المدرسة</a>
+      </div>
+    </section>
+    <section class="home-overview" aria-label="روابط سريعة">
+      <article class="overview-card">
+        <h3>الأعمال</h3>
+        <p>انتقل إلى القسم لمتابعة إعلانات المدرسة وآخر مستجداتها.</p>
+      </article>
+      <article class="overview-card">
+        <h3>موقع المدرسة</h3>
+        <p>رابط صفحة موقع مدرسة النهروان متاح من القائمة الجانبية.</p>
+      </article>
+    </section>
+    <section id="updates">
+      <div class="updates-heading">
+        <img class="updates-logo" src="assets/school-logo.png" alt="">
+        <div>
+          <div class="updates-heading-title">
+            <h2>تحديثات المدرسة</h2>
+            <a class="updates-page-link" href="school-updates.html">عرض التحديثات</a>
+          </div>
+          <p>تابع إعلانات المدرسة وآخر المستجدات من لوحة الإعلانات أدناه.</p>
+        </div>
+      </div>
+      <div id="notifications" class="notifications-board" aria-labelledby="notifications-title">
+        <div class="notifications-header">
+          <h2 id="notifications-title">لوحة الإعلانات</h2>
+          <button class="create-announcement-button" id="show-announcement-form" type="button" aria-expanded="false" aria-controls="announcement-form">إنشاء إعلان</button>
+        </div>
+        <form class="announcement-form" id="announcement-form" hidden>
+          <label for="announcement-title">عنوان الإعلان</label>
+          <input id="announcement-title" name="title" type="text" maxlength="100" required>
+          <span id="announcement-content-label">نص الإعلان</span>
+          <div class="editor-toolbar" role="toolbar" aria-label="تنسيق الإعلان">
+            <label for="announcement-color">لون النص</label>
+            <input id="announcement-color" type="color" value="#1f2937" aria-label="اختر لون النص المحدد">
+            <label for="announcement-size">حجم النص</label>
+            <select id="announcement-size" aria-label="اختر حجم النص المحدد">
+              <option value="14px">صغير</option>
+              <option value="16px" selected>عادي</option>
+              <option value="20px">كبير</option>
+              <option value="24px">أكبر</option>
+              <option value="32px">كبير جداً</option>
+            </select>
+            <input class="link-url" id="announcement-link-url" type="url" placeholder="رابط يبدأ بـ https:// أو http://" aria-label="الرابط المراد إضافته">
+            <button id="add-announcement-link" type="button">إضافة رابط</button>
+            <button id="choose-announcement-image" type="button">إضافة صورة</button>
+            <input class="image-upload-input" id="announcement-image" type="file" accept="image/png,image/jpeg,image/gif,image/webp">
+          </div>
+          <div class="announcement-editor" id="announcement-content" contenteditable="true" role="textbox" aria-labelledby="announcement-content-label" aria-multiline="true"></div>
+          <p class="editor-status" id="editor-status" role="alert" hidden></p>
+          <button type="submit">نشر الإعلان</button>
+        </form>
+        <div class="announcement-list" id="announcement-list" aria-live="polite">
+          <p class="notifications-empty" id="notifications-empty">لا توجد إعلانات حالياً.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="index.js?v=6"></script>
+</body>
+</html>

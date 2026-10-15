@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>تحديثات المدرسة | مدرسة النهروان</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 32px 20px;
+      background: #f5f7fb;
+      color: #1f2937;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+
+    main {
+      width: min(100%, 960px);
+      margin: 0 auto;
+      animation: page-entry 600ms ease-out both;
+    }
+
+    .updates-hero {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: clamp(28px, 5vw, 52px);
+      border-radius: 20px;
+      background: linear-gradient(135deg, #172554, #1e40af);
+      color: #fff;
+      box-shadow: 0 16px 36px #17255424;
+    }
+
+    .school-logo {
+      flex: 0 0 auto;
+      width: 112px;
+      height: 112px;
+      padding: 4px;
+      border-radius: 50%;
+      background: #fff;
+      object-fit: contain;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #bfdbfe;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 5vw, 40px);
+      line-height: 1.4;
+    }
+
+    .updates-hero p:last-child {
+      margin: 0;
+      color: #dbeafe;
+      line-height: 1.8;
+    }
+
+    .updates-content {
+      margin-top: 24px;
+      padding: clamp(22px, 4vw, 36px);
+      border: 1px solid #dbeafe;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 8px 24px #1725540d;
+    }
+
+    .updates-content h2 {
+      margin: 0 0 18px;
+      color: #172554;
+    }
+
+    .updates-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .updates-section-header h2 {
+      margin: 0;
+    }
+
+    .create-announcement-button,
+    .announcement-form button {
+      padding: 11px 18px;
+      border: 0;
+      border-radius: 8px;
+      background: #172554;
+      color: #fff;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .create-announcement-button:hover,
+    .announcement-form button:hover,
+    .create-announcement-button:focus-visible,
+    .announcement-form button:focus-visible {
+      background: #1e3a8a;
+    }
+
+    .announcement-form {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding: 18px;
+      border: 1px solid #dbeafe;
+      border-radius: 8px;
+      background: #f8faff;
+    }
+
+    .announcement-form[hidden] {
+      display: none;
+    }
+
+    .announcement-form label {
+      display: grid;
+      gap: 6px;
+      color: #172554;
+      font-weight: bold;
+    }
+
+    .announcement-form input,
+    .announcement-form textarea,
+    .announcement-form select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font: inherit;
+    }
+
+    .editor-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-bottom: 0;
+      border-radius: 6px 6px 0 0;
+      background: #fff;
+    }
+
+    .editor-toolbar button {
+      padding: 8px 12px;
+    }
+
+    .editor-toolbar input[type="color"] {
+      width: 44px;
+      height: 40px;
+      padding: 4px;
+      cursor: pointer;
+    }
+
+    .editor-toolbar select {
+      width: auto;
+    }
+
+    .editor-toolbar .link-url {
+      flex: 1 1 180px;
+      width: auto;
+    }
+
+    .image-upload-input {
+      display: none;
+    }
+
+    .announcement-editor {
+      min-height: 140px;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 0 0 6px 6px;
+      background: #fff;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .announcement-editor:focus {
+      border-color: #1e3a8a;
+      outline: 2px solid #bfdbfe;
+    }
+
+    .announcement-editor:hover {
+      border-color: #93c5fd;
+    }
+
+    .announcement-editor img,
+    .update-card img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+
+    .update-card a {
+      color: #1d4ed8;
+      text-decoration: underline;
+      overflow-wrap: anywhere;
+    }
+
+    .editor-status {
+      margin: 0;
+      color: #b91c1c;
+      line-height: 1.6;
+    }
+
+    .announcement-note {
+      margin: 0;
+      color: #64748b;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .loading-state {
+      margin: 0;
+      color: #4b5563;
+      line-height: 1.8;
+    }
+
+    .update-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .update-card {
+      padding: 20px;
+      border: 1px solid #dbeafe;
+      border-radius: 12px;
+      background: #fff;
+      animation: page-entry 400ms ease-out both;
+    }
+
+    .update-card h3 {
+      margin: 0 0 8px;
+      color: #172554;
+      line-height: 1.5;
+    }
+
+    .update-meta {
+      margin: 0 0 12px;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    .update-content {
+      margin: 0;
+      line-height: 1.9;
+      overflow-wrap: anywhere;
+      white-space: pre-wrap;
+    }
+
+    .rich-update-content {
+      white-space: normal;
+    }
+
+    .loading-state[hidden],
+    .update-list[hidden] {
+      display: none;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 11px 18px;
+      border-radius: 8px;
+      background: #172554;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    }
+
+    .back-link:hover {
+      background: #1e3a8a;
+      box-shadow: 0 6px 16px #17255424;
+      transform: translateY(-2px);
+    }
+
+    .back-link:active {
+      transform: scale(0.98);
+    }
+
+    .back-link:focus-visible {
+      outline: 3px solid #60a5fa;
+      outline-offset: 3px;
+    }
+
+    @keyframes page-entry {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .updates-hero {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .school-logo {
+        width: 84px;
+        height: 84px;
+      }
+
+      .updates-section-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="updates-hero">
+      <img class="school-logo" src="assets/school-logo.png" alt="شعار مدرسة النهروان">
+      <div>
+        <p class="eyebrow">مدرسة النهروان الثانوية - جدة</p>
+        <h1>تحديثات المدرسة</h1>
+        <p>تابع هنا آخر أخبار المدرسة وإعلاناتها الرسمية.</p>
+      </div>
+    </header>
+    <section class="updates-content" id="updates-section" aria-labelledby="updates-title">
+      <div class="updates-section-header">
+        <h2 id="updates-title">آخر التحديثات</h2>
+        <button class="create-announcement-button" id="show-announcement-form" type="button" aria-expanded="false" aria-controls="announcement-form">إنشاء إعلان</button>
+      </div>
+      <form class="announcement-form" id="announcement-form" hidden>
+        <label for="announcement-title">عنوان الإعلان</label>
+        <input id="announcement-title" name="title" type="text" maxlength="100" required>
+        <span id="announcement-content-label">نص الإعلان</span>
+        <div class="editor-toolbar" role="toolbar" aria-label="تنسيق الإعلان">
+          <label for="announcement-color">لون النص</label>
+          <input id="announcement-color" type="color" value="#1f2937" aria-label="اختر لون النص المحدد">
+          <label for="announcement-size">حجم النص</label>
+          <select id="announcement-size" aria-label="اختر حجم النص المحدد">
+            <option value="14px">صغير</option>
+            <option value="16px" selected>عادي</option>
+            <option value="20px">كبير</option>
+            <option value="24px">أكبر</option>
+            <option value="32px">كبير جداً</option>
+          </select>
+          <input class="link-url" id="announcement-link-url" type="url" placeholder="رابط يبدأ بـ https:// أو http://" aria-label="الرابط المراد إضافته">
+          <button id="add-announcement-link" type="button">إضافة رابط</button>
+          <button id="choose-announcement-image" type="button">إضافة صورة</button>
+          <input class="image-upload-input" id="announcement-image" type="file" accept="image/png,image/jpeg,image/gif,image/webp">
+        </div>
+        <div class="announcement-editor" id="announcement-content" contenteditable="true" role="textbox" aria-labelledby="announcement-content-label" aria-multiline="true"></div>
+        <p class="announcement-note">سيُحفظ الإعلان في هذا المتصفح فقط، ولن يظهر على أجهزة الزوار الآخرين.</p>
+        <p class="editor-status" id="editor-status" role="alert" hidden></p>
+        <button type="submit">نشر الإعلان</button>
+      </form>
+      <p class="loading-state" id="loading-state">جارٍ تحميل التحديثات...</p>
+      <div class="update-list" id="update-list" hidden></div>
+      <a class="back-link" href="index.html#updates">العودة إلى الصفحة الرئيسية</a>
+    </section>
+  </main>
+  <script src="school-updates.js?v=4" type="module"></script>
+</body>
+</html>
