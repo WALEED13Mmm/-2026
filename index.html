@@ -108,6 +108,20 @@
       font-size: 22px;
     }
 
+    .sidebar-menu-trigger {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .sidebar-menu-trigger:focus-visible {
+      outline: 3px solid #60a5fa;
+      outline-offset: 4px;
+    }
+
     .sidebar-logo {
       display: block;
       width: 132px;
@@ -127,6 +141,7 @@
     .sidebar a {
       display: block;
       padding: 12px 14px;
+      border: 1px solid #ffffff30;
       border-radius: 8px;
       color: #dbeafe;
       text-decoration: none;
@@ -134,6 +149,7 @@
 
     .sidebar a:hover,
     .sidebar a:focus-visible {
+      border-color: #fff;
       background: #1e3a8a;
       color: #fff;
       outline: 3px solid #60a5fa;
@@ -158,6 +174,60 @@
       background: linear-gradient(135deg, #172554, #1e40af);
       color: #fff;
       box-shadow: 0 16px 36px #17255424;
+    }
+
+    .urgent-announcement-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 22px;
+      padding: 16px 20px;
+      border: 1px solid #fca5a5;
+      border-inline-start: 6px solid #dc2626;
+      border-radius: 12px;
+      background: #fff1f2;
+      color: #7f1d1d;
+      box-shadow: 0 8px 20px rgb(127 29 29 / 8%);
+    }
+
+    .urgent-announcement-banner[hidden] {
+      display: none;
+    }
+
+    .urgent-announcement-icon {
+      flex: 0 0 auto;
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 50%;
+      background: #dc2626;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .urgent-announcement-title-label,
+    .urgent-announcement-title,
+    .urgent-announcement-message {
+      margin: 0;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .urgent-announcement-title-label {
+      margin-bottom: 4px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .urgent-announcement-title {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .urgent-announcement-message:empty {
+      display: none;
     }
 
     .home-hero::after {
@@ -276,6 +346,34 @@
       line-height: 1.7;
     }
 
+    .overview-card .updates-page-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 16px;
+      padding: 10px 16px;
+      border: 1px solid #1e40af;
+      border-radius: 8px;
+      background: #1e40af;
+      color: #fff;
+      font-weight: bold;
+      line-height: 1.4;
+      text-decoration: none;
+      box-shadow: 0 3px 8px #1e40af24;
+    }
+
+    .overview-card .updates-page-link:hover {
+      border-color: #172554;
+      background: #172554;
+      box-shadow: 0 6px 14px #17255430;
+      transform: translateY(-2px);
+    }
+
+    .overview-card .updates-page-link:focus-visible {
+      outline: 3px solid #60a5fa;
+      outline-offset: 3px;
+    }
+
     .updates-heading {
       display: flex;
       align-items: center;
@@ -311,22 +409,6 @@
       margin: 0;
     }
 
-    .updates-page-link {
-      display: inline-block;
-      padding: 9px 14px;
-      border-radius: 8px;
-      background: #172554;
-      color: #fff;
-      font-size: 14px;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .updates-page-link:hover {
-      background: #1e3a8a;
-      transform: translateY(-2px);
-    }
-
     .updates-heading p {
       margin: 0;
       color: #4b5563;
@@ -339,6 +421,12 @@
       border-radius: 12px;
       background: #fff;
       box-shadow: 0 4px 12px #1725540d;
+    }
+
+    .admin-access-status {
+      margin: 0;
+      color: #334155;
+      line-height: 1.7;
     }
 
     .notifications-board h2 {
@@ -390,11 +478,53 @@
       display: none;
     }
 
+    .announcement-filters {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(180px, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .announcement-filters label {
+      display: grid;
+      gap: 6px;
+      color: #172554;
+      font-weight: bold;
+    }
+
+    .announcement-filters input,
+    .announcement-filters select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      background: #fff;
+      font: inherit;
+    }
+
     .announcement-form label {
       display: grid;
       gap: 6px;
       color: #172554;
       font-weight: bold;
+    }
+
+    .announcement-form .urgent-announcement-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      background: #fff7f7;
+      color: #991b1b;
+    }
+
+    .announcement-form .urgent-announcement-option input {
+      flex: 0 0 auto;
+      width: 18px;
+      height: 18px;
+      margin: 0;
     }
 
     .announcement-form input,
@@ -428,6 +558,15 @@
       height: 40px;
       padding: 4px;
       cursor: pointer;
+    }
+
+    .editor-toolbar input[type="number"] {
+      width: 88px;
+      padding: 8px;
+    }
+
+    .editor-toolbar input[type="checkbox"] {
+      width: auto;
     }
 
     .editor-toolbar select {
@@ -471,6 +610,19 @@
       border-radius: 6px;
     }
 
+    .announcement-editor img[draggable="true"] {
+      cursor: grab;
+    }
+
+    .announcement-editor img[draggable="true"]:active {
+      cursor: grabbing;
+    }
+
+    .announcement-editor img.is-selected {
+      outline: 2px solid #2563eb;
+      outline-offset: 2px;
+    }
+
     .announcement a {
       color: #1d4ed8;
       text-decoration: underline;
@@ -493,8 +645,104 @@
       gap: 12px;
     }
 
+    .update-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .update-list[hidden],
+    .no-update-results[hidden] {
+      display: none;
+    }
+
+    .update-card {
+      padding: 18px;
+      border: 1px solid #dbeafe;
+      border-radius: 8px;
+      background: #f5f7fb;
+    }
+
+    .update-card h3 {
+      margin: 0 0 8px;
+      color: #172554;
+    }
+
+    .update-meta {
+      margin: 12px 0 0;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    .update-content {
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .update-content img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 12px 0;
+    }
+
+    .update-content img[role="button"] {
+      cursor: zoom-in;
+    }
+
+    .image-viewer {
+      position: fixed;
+      width: min(92vw, 1100px);
+      max-width: none;
+      max-height: 92vh;
+      padding: 48px 16px 16px;
+      border: 0;
+      border-radius: 12px;
+      background: #111827;
+      overflow: visible;
+    }
+
+    .image-viewer::backdrop {
+      background: rgb(0 0 0 / 82%);
+    }
+
+    .image-viewer-content {
+      display: block;
+      width: 100%;
+      max-height: calc(92vh - 64px);
+      object-fit: contain;
+      margin: auto;
+    }
+
+    .image-viewer-close {
+      position: absolute;
+      top: 8px;
+      inset-inline-end: 8px;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: #fff;
+      color: #111827;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .update-content a {
+      color: #1d4ed8;
+      overflow-wrap: anywhere;
+    }
+
+    .loading-state,
+    .no-update-results {
+      color: #64748b;
+      line-height: 1.7;
+    }
+
     .announcement {
       padding: 18px;
+      border: 1px solid transparent;
       border-radius: 8px;
       background: #f5f7fb;
     }
@@ -510,6 +758,28 @@
       white-space: pre-wrap;
     }
 
+    .announcement-management {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .announcement-management button {
+      padding: 8px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      background: #fff;
+      color: #172554;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .announcement-management button:last-child {
+      border-color: #fecaca;
+      color: #b91c1c;
+    }
+
     .notifications-empty {
       margin: 0;
       padding: 18px;
@@ -517,6 +787,16 @@
       background: #f5f7fb;
       color: #4b5563;
       line-height: 1.7;
+    }
+
+    .announcement-no-results {
+      margin: 0;
+      padding: 14px;
+      color: #64748b;
+    }
+
+    .announcement-no-results[hidden] {
+      display: none;
     }
 
     @media (max-width: 600px) {
@@ -567,6 +847,10 @@
         align-items: flex-start;
         flex-direction: column;
       }
+
+      .announcement-filters {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -584,15 +868,18 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="theme.css?v=8">
+  <script src="theme.js?v=1"></script>
 </head>
-<body>
+<body data-collection="announcements">
   <aside class="sidebar" aria-label="الشريط الجانبي">
     <img class="sidebar-logo" src="assets/school-logo.png" alt="شعار مدرسة النهروان">
-    <h1>القائمة</h1>
-    <nav>
+    <h1><button class="sidebar-menu-trigger" id="admin-menu-trigger" type="button" aria-expanded="false" aria-controls="sidebar-navigation">القائمة<span class="sidebar-menu-icon" aria-hidden="true"><span></span></span></button></h1>
+    <button class="sidebar-menu-backdrop" id="sidebar-menu-backdrop" type="button" aria-label="إغلاق القائمة" hidden></button>
+    <nav id="sidebar-navigation" aria-hidden="true">
       <a href="#home">الرئيسية</a>
-      <a href="school-updates.html">تحديثات المدرسة</a>
-      <a href="#notifications">الإعلانات</a>
+      <a href="school-updates.html">تعميمات</a>
+      <a href="announcements.html">الإعلانات</a>
       <a href="school-site.html">موقع مدرسة النهروان</a>
       <a href="https://classroom.google.com/u/0/c/ODg0NjkwNTM4NzY4" target="_blank" rel="noopener noreferrer">جوجل كلاس روم</a>
 
@@ -604,6 +891,14 @@
     </nav>
   </aside>
   <main>
+    <section id="urgent-announcement-banner" class="urgent-announcement-banner" aria-label="تنبيه عاجل" role="alert" hidden>
+      <span class="urgent-announcement-icon" aria-hidden="true">!</span>
+      <div>
+        <p class="urgent-announcement-title-label">تنبيه مهم</p>
+        <h2 class="urgent-announcement-title"></h2>
+        <p class="urgent-announcement-message"></p>
+      </div>
+    </section>
     <section id="home" class="home-hero">
       <div class="home-hero-brand">
         <img class="home-hero-logo" src="assets/school-logo.png" alt="شعار مدرسة النهروان">
@@ -622,6 +917,7 @@
       <article class="overview-card">
         <h3>الأعمال</h3>
         <p>انتقل إلى القسم لمتابعة إعلانات المدرسة وآخر مستجداتها.</p>
+        <a class="updates-page-link" href="school-updates.html">تعميمات</a>
       </article>
       <article class="overview-card">
         <h3>موقع المدرسة</h3>
@@ -632,23 +928,41 @@
       <div class="updates-heading">
         <img class="updates-logo" src="assets/school-logo.png" alt="">
         <div>
-          <div class="updates-heading-title">
-            <h2>تحديثات المدرسة</h2>
-            <a class="updates-page-link" href="school-updates.html">عرض التحديثات</a>
-          </div>
-          <p>تابع إعلانات المدرسة وآخر المستجدات من لوحة الإعلانات أدناه.</p>
+          <h2>لوحة الإعلانات</h2>
+          <p>إعلانات المدرسة وتصنيفاتها وتواريخ نشرها.</p>
         </div>
       </div>
-      <div id="notifications" class="notifications-board" aria-labelledby="notifications-title">
+      <div class="notifications-board">
+        <p class="admin-access-status" id="admin-access-status" role="status" aria-live="polite" hidden></p>
         <div class="notifications-header">
-          <h2 id="notifications-title">لوحة الإعلانات</h2>
-          <button class="create-announcement-button" id="show-announcement-form" type="button" aria-expanded="false" aria-controls="announcement-form">إنشاء إعلان</button>
+          <h2 id="announcements-title">إعلانات المدرسة</h2>
+          <button class="create-announcement-button" id="show-announcement-form" type="button" aria-expanded="false" aria-controls="announcement-form" hidden>إضافة إعلان</button>
         </div>
         <form class="announcement-form" id="announcement-form" hidden>
-          <label for="announcement-title">عنوان الإعلان</label>
-          <input id="announcement-title" name="title" type="text" maxlength="100" required>
+          <label for="announcement-title">عنوان الإعلان
+            <input id="announcement-title" name="title" type="text" maxlength="100" required>
+          </label>
+          <label for="announcement-category">تصنيف الإعلان
+            <select id="announcement-category" name="category" required>
+              <option value="عام">عام</option>
+              <option value="اختبارات">اختبارات</option>
+              <option value="واجبات">واجبات</option>
+              <option value="فعاليات">فعاليات</option>
+              <option value="تنبيهات">تنبيهات</option>
+              <option value="اوراق عمل">اوراق عمل</option>
+              <option value="نتائج">نتائج</option>
+            </select>
+          </label>
+          <label class="urgent-announcement-option" for="announcement-urgent">
+            <input id="announcement-urgent" name="urgent" type="checkbox">
+            عرض كتنبيه مهم أعلى الصفحة الرئيسية
+          </label>
           <span id="announcement-content-label">نص الإعلان</span>
           <div class="editor-toolbar" role="toolbar" aria-label="تنسيق الإعلان">
+            <button type="button" data-text-format="STRONG" aria-label="تغميق النص المحدد أو إزالة التغميق" title="عريض / إزالة"><strong>ع</strong></button>
+            <button type="button" data-text-format="EM" aria-label="إمالة النص المحدد أو إزالة الإمالة" title="مائل / إزالة"><em>م</em></button>
+            <button type="button" data-text-format="U" aria-label="تسطير النص المحدد أو إزالة التسطير" title="تسطير / إزالة"><u>س</u></button>
+            <button type="button" id="remove-announcement-formatting" aria-label="إزالة تنسيق النص المحدد" title="إزالة التنسيق">إزالة التنسيق</button>
             <label for="announcement-color">لون النص</label>
             <input id="announcement-color" type="color" value="#1f2937" aria-label="اختر لون النص المحدد">
             <label for="announcement-size">حجم النص</label>
@@ -663,17 +977,47 @@
             <button id="add-announcement-link" type="button">إضافة رابط</button>
             <button id="choose-announcement-image" type="button">إضافة صورة</button>
             <input class="image-upload-input" id="announcement-image" type="file" accept="image/png,image/jpeg,image/gif,image/webp">
+            <label for="announcement-image-width">العرض (بكسل)</label>
+            <input id="announcement-image-width" type="number" min="1" max="2000" step="1" aria-label="عرض الصورة المحددة بالبكسل">
+            <label for="announcement-image-height">الارتفاع (بكسل)</label>
+            <input id="announcement-image-height" type="number" min="1" max="2000" step="1" aria-label="ارتفاع الصورة المحددة بالبكسل">
+            <label for="preserve-image-ratio">
+              <input id="preserve-image-ratio" type="checkbox" checked>
+              الحفاظ على التناسب
+            </label>
+            <button id="reset-announcement-image-size" type="button">المقاس الأصلي</button>
           </div>
           <div class="announcement-editor" id="announcement-content" contenteditable="true" role="textbox" aria-labelledby="announcement-content-label" aria-multiline="true"></div>
+          <p class="announcement-note">حدد الصورة لتعديل العرض والارتفاع بالبكسل، أو اسحبها لتغيير موضعها.</p>
+          <p class="announcement-note">سيظهر الإعلان لجميع زوار الموقع بعد نشره.</p>
           <p class="editor-status" id="editor-status" role="alert" hidden></p>
           <button type="submit">نشر الإعلان</button>
+          <button id="cancel-announcement-edit" type="button" hidden>إلغاء التعديل</button>
         </form>
-        <div class="announcement-list" id="announcement-list" aria-live="polite">
-          <p class="notifications-empty" id="notifications-empty">لا توجد إعلانات حالياً.</p>
+        <div class="announcement-filters" role="search" aria-label="البحث في الإعلانات">
+          <label for="update-search">بحث في الإعلانات
+            <input id="update-search" type="search" placeholder="ابحث بعنوان الإعلان أو محتواه">
+          </label>
+          <label for="update-filter-category">التصنيف
+            <select id="update-filter-category">
+              <option value="">كل التصنيفات</option>
+              <option value="عام">عام</option>
+              <option value="اختبارات">اختبارات</option>
+              <option value="واجبات">واجبات</option>
+              <option value="فعاليات">فعاليات</option>
+              <option value="تنبيهات">تنبيهات</option>
+              <option value="اوراق عمل">اوراق عمل</option>
+              <option value="نتائج">نتائج</option>
+            </select>
+          </label>
         </div>
+        <p class="loading-state" id="loading-state">جارٍ تحميل الإعلانات...</p>
+        <div class="update-list" id="update-list" hidden></div>
+        <p class="no-update-results" id="update-no-results" role="status" hidden>لا توجد إعلانات تطابق البحث أو التصنيف.</p>
       </div>
     </section>
   </main>
-  <script type="module" src="index.js?v=6"></script>
+  <script type="module" src="index.js?v=17"></script>
+  <script type="module" src="school-updates.js?v=30"></script>
 </body>
 </html>

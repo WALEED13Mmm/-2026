@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>دخول الإدارة | مدرسة النهروان</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 32px 20px;
+      background: #f5f7fb;
+      color: #1f2937;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+
+    main {
+      width: min(100%, 520px);
+      margin: 8vh auto 0;
+    }
+
+    .admin-panel {
+      display: grid;
+      gap: 18px;
+      padding: clamp(22px, 6vw, 36px);
+      border: 1px solid #dbeafe;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 12px 32px #17255414;
+    }
+
+    h1 {
+      margin: 0;
+      color: #172554;
+      font-size: clamp(26px, 7vw, 34px);
+    }
+
+    .admin-description,
+    .admin-status {
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .admin-status {
+      color: #475569;
+    }
+
+    .admin-login-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .admin-login-form[hidden] {
+      display: none;
+    }
+
+    .admin-login-form label {
+      display: grid;
+      gap: 7px;
+      font-weight: bold;
+    }
+
+    .admin-login-form input {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font: inherit;
+    }
+
+    .admin-panel button,
+    .admin-home-link {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 8px;
+      background: #172554;
+      color: #fff;
+      font: bold 15px Tahoma, Arial, sans-serif;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .admin-panel button:hover,
+    .admin-home-link:hover {
+      background: #1e3a8a;
+    }
+
+    .admin-panel button[hidden] {
+      display: none;
+    }
+
+    .admin-home-link {
+      justify-self: start;
+      background: #e0e7ff;
+      color: #172554;
+    }
+
+    :focus-visible {
+      outline: 3px solid #60a5fa;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 14px;
+      }
+
+      main {
+        margin-top: 6vh;
+      }
+
+      .admin-panel {
+        gap: 16px;
+      }
+
+      .admin-home-link {
+        width: 100%;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="theme.css?v=4">
+  <script src="theme.js?v=1"></script>
+</head>
+<body>
+  <main>
+    <section class="admin-panel" aria-labelledby="admin-title">
+      <h1 id="admin-title">دخول الإدارة</h1>
+      <p class="admin-description">هذه الصفحة مخصصة لإدارة إعلانات مدرسة النهروان.</p>
+      <p class="admin-status" id="admin-access-status" role="status" aria-live="polite">جارٍ التحقق من حالة الدخول...</p>
+      <form class="admin-login-form" id="admin-login-form">
+        <label for="admin-username">اسم المستخدم
+          <input id="admin-username" name="username" type="password" autocomplete="username" required maxlength="100">
+        </label>
+        <label for="admin-password">كلمة المرور
+          <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+        </label>
+        <button type="submit">تسجيل الدخول</button>
+      </form>
+      <button id="admin-logout" type="button" hidden>تسجيل الخروج</button>
+      <a class="admin-home-link" href="index.html">العودة إلى الموقع</a>
+    </section>
+  </main>
+  <script type="module" src="admin.js?v=1"></script>
+</body>
+</html>
